@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7586a389-47d9-4c91-8c60-d707143a4cc8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/codeA2/build.sbt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/ALU.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/CPUTop.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/ControlUnit.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/DataMemory.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/Hello.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/ProgramCounter.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/ProgramMemory.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/RegisterFile.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/test/scala/CPUTopTester.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/test/scala/HelloTester.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/test/scala/Images.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/test/scala/ProgramCounterTester.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeA2/src/test/scala/Programs.scala" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="SBT">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="chiselproject" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2nCOMLSSRBLXPNlkPZOs9sRQiFf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/lucia/Documents/GitHub/chiselproject",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/codeA2" />
+    </key>
+  </component>
+  <component name="ScalaProjectSettings">
+    <option name="migrateConfigurationsNotificationShown" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7586a389-47d9-4c91-8c60-d707143a4cc8" name="Changes" comment="" />
+      <created>1728473542368</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728473542368</updated>
+    </task>
+    <servers />
+  </component>
+</project>
