@@ -1,0 +1,52 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(test:runMain CPUTopTester, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / runMain[0m
+[0m[[0m[33mwarn[0m] [0m[0msbt 0.13 shell syntax is deprecated; use slash syntax instead: Test / runMain[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[33mwarn[0m] [0m[0mmultiple main classes detected: run 'show discoveredMainClasses' to see the list[0m
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.PassExceptions: [0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  : [module ProgramCounter]  Reference io is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : io.programCounter <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 23:30] : [module CPUTop]  Reference programCounter is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : programCounter.io.programCounterJump <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 23:30] : [module CPUTop]  Reference programCounter is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : programCounter.io.run <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 23:30] : [module CPUTop]  Reference programCounter is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : programCounter.io.jump <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 23:30] : [module CPUTop]  Reference programCounter is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : programCounter.io.stop <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 24:26] : [module CPUTop]  Reference dataMemory is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : dataMemory.io.address <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 24:26] : [module CPUTop]  Reference dataMemory is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : dataMemory.io.dataWrite <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 25:29] : [module CPUTop]  Reference programMemory is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : programMemory.io.address <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 24:26] : [module CPUTop]  Reference dataMemory is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : dataMemory.io.writeEnable <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  : [module CPUTop]  Reference io is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : io.done <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.PassException: 10 errors detected![0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mrunMain[0m) firrtl.passes.PassExceptions: [0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  : [module ProgramCounter]  Reference io is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : io.programCounter <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 23:30] : [module CPUTop]  Reference programCounter is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : programCounter.io.programCounterJump <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 23:30] : [module CPUTop]  Reference programCounter is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : programCounter.io.run <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 23:30] : [module CPUTop]  Reference programCounter is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : programCounter.io.jump <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 23:30] : [module CPUTop]  Reference programCounter is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : programCounter.io.stop <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 24:26] : [module CPUTop]  Reference dataMemory is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : dataMemory.io.address <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 24:26] : [module CPUTop]  Reference dataMemory is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : dataMemory.io.dataWrite <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 25:29] : [module CPUTop]  Reference programMemory is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : programMemory.io.address <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  @[CPUTop.scala 24:26] : [module CPUTop]  Reference dataMemory is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : dataMemory.io.writeEnable <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.CheckInitialization$RefNotInitializedException:  : [module CPUTop]  Reference io is not fully initialized.[0m
+[0m[[0m[31merror[0m] [0m[0m   : io.done <= VOID[0m
+[0m[[0m[31merror[0m] [0m[0mfirrtl.passes.PassException: 10 errors detected![0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 1 s, completed Oct 9, 2024 3:59:18 PM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(idea-shell, None, None)[0m

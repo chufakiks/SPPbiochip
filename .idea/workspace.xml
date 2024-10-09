@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7586a389-47d9-4c91-8c60-d707143a4cc8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/codeA2/build.sbt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/ALU.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/CPUTop.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/ControlUnit.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/DataMemory.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/Hello.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/ProgramCounter.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/ProgramMemory.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/main/scala/RegisterFile.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/test/scala/CPUTopTester.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/test/scala/HelloTester.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/test/scala/Images.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/test/scala/ProgramCounterTester.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeA2/src/test/scala/Programs.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/Hello.vcd" beforeDir="false" afterPath="$PROJECT_DIR$/generated/Hello.vcd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/output_dsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/ProgramCounter.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/ProgramCounter.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +58,9 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/lucia/Documents/GitHub/chiselproject",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Global Libraries",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
@@ -91,5 +82,8 @@
       <updated>1728473542368</updated>
     </task>
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.v" />
   </component>
 </project>
