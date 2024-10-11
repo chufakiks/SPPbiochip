@@ -19,5 +19,4 @@ class ProgramCounter extends Module {
   }.elsewhen(io.run & !io.stop & io.jump){
       programCounterReg := io.programCounterJump
   }
-
 }
