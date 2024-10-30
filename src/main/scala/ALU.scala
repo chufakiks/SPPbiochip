@@ -3,9 +3,21 @@ import chisel3.util._
 
 class ALU extends Module {
   val io = IO(new Bundle {
-    //Define the module interface here (inputs/outputs)
+    val A = Input(UInt(32.W))
+    val B = Input(UInt(32.W))
+    val opcode = Input(UInt(32.W))
+    val resultint = Output(UInt(32.W))
+    val resultbool = Output(Bool())
   })
 
-  //Implement this module here
+  resultint := 0.U
+  resultbool := false.B
+
+  switch(io.opcode){
+    is(0.U) { io.resultint := io.A + io.B }
+    is(1.U) { io.resultint := io.A - io.B } 
+    is(2.U) { io.resultint := io.A * io.B }
+    is(3.U) { io.resultbool := io.A == io.B }
+  }
 
 }
