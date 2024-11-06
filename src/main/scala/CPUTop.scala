@@ -1,10 +1,13 @@
 import chisel3._
 import chisel3.util._
+import firrtl.FirrtlProtos.Firrtl.Expression.Mux
 
 class CPUTop extends Module {
   val io = IO(new Bundle {
     val done = Output(Bool ())
     val run = Input(Bool ())
+    val jump = Input(Bool())
+
     //This signals are used by the tester for loading and dumping the memory content, do not touch
     val testerDataMemEnable = Input(Bool ())
     val testerDataMemAddress = Input(UInt (16.W))
@@ -17,6 +20,7 @@ class CPUTop extends Module {
     val testerProgMemDataRead = Output(UInt (32.W))
     val testerProgMemWriteEnable = Input(Bool ())
     val testerProgMemDataWrite = Input(UInt (32.W))
+
   })
 
   //Creating components
@@ -26,10 +30,27 @@ class CPUTop extends Module {
   val registerFile = Module(new RegisterFile())
   val controlUnit = Module(new ControlUnit())
   val alu = Module(new ALU())
+  val muxImmediate = Mux(controlUnit.io.memRead, registerFile.io.output2, registerFile.io.output1)
+  val muxWriteReg = Mux(controlUnit.io.regWrite, alu.io.resultint,dataMemory.io.dataRead)
+  val muxJumpSelector = Mux(controlUnit.io.jump, alu.io.resultbool, controlUnit.io.memRead)
+  val muxJump = Mux(muxJumpSelector, programMemory.io.address, programCounter.io.programCounter)
+
+
+
 
   //Connecting the modules
-  //programCounter.io.run := io.run
-  //programMemory.io.address := programCounter.io.programCounter
+
+  programCounter.io.run := io.run
+  programMemory.io.address := programCounter.io.programCounter
+  alu.io.aluOp := controlUnit.io.aluOp
+  programCounter.io.stop := controlUnit.io.stop
+  registerFile.io.readAdress1 := programMemory.io.instructionRead
+  registerFile.io.readAdress2 := programMemory.io.instructionRead
+  registerFile.io.writeSel := programMemory.io.instructionRead
+
+  muxImmediate := programMemory.io.address
+  muxWriteReg := 
+
 
   ////////////////////////////////////////////
   //Continue here with your connections

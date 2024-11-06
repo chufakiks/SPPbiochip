@@ -9,7 +9,7 @@ class ControlUnit extends Module {
     val memWrite = Output(Bool()) //if write to regiter SD
     val memRead = Output(Bool()) //if read from memory LD
     val jump = Output(Bool()) //jump or not
-    val jumpAddrs = Output(UInt(7.W)) //jumt to adress...
+    val stop = Output(Bool())
     //Define the module interface here (inputs/outputs)
   })
 
@@ -72,7 +72,7 @@ class ControlUnit extends Module {
       io.aluOp := 1.U //sub
     }
     is(10.U) {
-      io.end := false.b
+      io.stop := true.B
     }
   }
 

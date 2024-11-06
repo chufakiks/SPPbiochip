@@ -5,7 +5,7 @@ class ALU extends Module {
   val io = IO(new Bundle {
     val A = Input(UInt(32.W))
     val B = Input(UInt(32.W))
-    val opcode = Input(UInt(32.W))
+    val aluOp = Input(UInt(32.W))
     val resultint = Output(UInt(32.W))
     val resultbool = Output(Bool())
   })
@@ -13,7 +13,7 @@ class ALU extends Module {
   io.resultint := 0.U
   io.resultbool := false.B
 
-  switch(io.opcode){
+  switch(io.aluOp){
     is(0.U) { io.resultint := io.A + io.B }
     is(1.U) { io.resultint := io.A - io.B } 
     is(2.U) { io.resultint := io.A * io.B }
