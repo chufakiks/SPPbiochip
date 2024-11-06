@@ -10,14 +10,14 @@ class ALU extends Module {
     val resultbool = Output(Bool())
   })
 
-  resultint := 0.U
-  resultbool := false.B
+  io.resultint := 0.U
+  io.resultbool := false.B
 
   switch(io.opcode){
     is(0.U) { io.resultint := io.A + io.B }
     is(1.U) { io.resultint := io.A - io.B } 
     is(2.U) { io.resultint := io.A * io.B }
-    is(3.U) { io.resultbool := io.A == io.B }
+    //is(3.U) { io.resultbool := io.A == io.B }
   }
 
 }
