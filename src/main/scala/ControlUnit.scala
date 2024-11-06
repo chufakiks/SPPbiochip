@@ -58,7 +58,7 @@ class ControlUnit extends Module {
     }
     is(7.U) { //JR
       io.jump := true.B
-      io.jumpAddrs := 7.U
+      //io.jumpAddrs := 7.U
       io.regWrite := false.B
       io.memWrite := false.B
       io.memRead := false.B
