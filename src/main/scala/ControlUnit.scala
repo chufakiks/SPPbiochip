@@ -48,33 +48,31 @@ class ControlUnit extends Module {
       io.regWrite := true.B
       io.memRead := true.B
       io.memWrite := false.B
-      io.aluOp := //no ALU?
+      io.aluOp := 5.U//no ALU?
     }
     is(6.U) { //SD
       io.regWrite := false.B
-      io.aluOp := //not needed?
+      io.aluOp := 6.U
       io.memRead := false.B
       io.memWrite := true.B
     }
     is(7.U) { //JR
       io.jump := true.B
-      io.jumpAddrs := // what should go here
+      io.jumpAddrs := 7.U
       io.regWrite := false.B
       io.memWrite := false.B
       io.memRead := false.B
     }
     is(8.U) { // JEQ
       io.jump := true.B
-      io.jumpAddrs :=
       io.aluOp := 1.U //SUB
     }
     is(9.U) { // JLT
       io.jump := true.B
-      io.jumpAddrs := //?
       io.aluOp := 1.U //sub
     }
     is(10.U) {
-      //stop programme
+      io.end := false.b
     }
   }
 
