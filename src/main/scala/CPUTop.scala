@@ -35,7 +35,7 @@ class CPUTop extends Module {
   val muxJumpSelector = Mux(controlUnit.io.jump, alu.io.resultbool, controlUnit.io.memRead)
   val muxJump = Mux(muxJumpSelector, programMemory.io.address, programCounter.io.programCounter)
   */
-  
+
 
   // spliting up the instruction
   val instruction = programMemory.io.instructionRead
@@ -52,7 +52,7 @@ class CPUTop extends Module {
   //val muxcontrolunit = Mux(alu.io.resultbool,controlUnit.io.jump,what to put here)
 
   //mux inbetween pc and adder
-  val muxpcadd = Mux(muxcontrolunit, programCounter.io.programCounter + 1, instruction(17,11))
+  //val muxpcadd = Mux(muxcontrolunit, programCounter.io.programCounter + 1, instruction(17,11))
 
   //Connecting the modules
 
