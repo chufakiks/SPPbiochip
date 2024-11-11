@@ -41,10 +41,14 @@ class CPUTop extends Module {
   val instruction = programMemory.io.instructionRead
 
   //muxes
+  val immediate = instruction(17, 8)
+
+  val muxregalu = Mux(controlUnit.io.aluSrc, immediate, registerFile.io.readAdress2)
+  alu.io.B := muxregalu
 
   //mux inbetween datamemory and register file
   val muxdatareg = Mux(controlUnit.io.memRead, dataMemory.io.dataRead, alu.io.resultint)
-
+  registerFile.io.writeData := muxregalu
   //mux inbetween registerfile and alu
   //val muxregalu = Mux(sel er ikke implerenteret, instruction(17,8),registerFile.io.readAdress2)
 
@@ -55,6 +59,11 @@ class CPUTop extends Module {
   //val muxpcadd = Mux(muxcontrolunit, programCounter.io.programCounter + 1, instruction(17,11))
 
   //Connecting the modules
+  // Program counter update logic with conditional jump
+  val jumpCondition = (controlUnit.io.jeq && alu.io.resultbool) || (controlUnit.io.jlt && alu.io.resultbool)
+  val finalJump = controlUnit.io.jump && jumpCondition
+  val nextPC = Mux(finalJump, alu.io.resultint, programCounter.io.programCounter + 1.U)
+  programCounter.io.programCounterJump := nextPC
 
   //programcounter
   programCounter.io.run := io.run
