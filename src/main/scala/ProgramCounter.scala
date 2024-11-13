@@ -9,14 +9,12 @@ class ProgramCounter extends Module {
     val programCounterJump = Input(UInt(16.W))
     val programCounter = Output(UInt(16.W))
   })
-
   val programCounterReg = RegInit(0.U(16.W))
-
-  io.programCounter := programCounterReg
 
   when(io.run & !io.stop & !io.jump){
     programCounterReg := io.programCounter + 1.U
   }.elsewhen(io.run & !io.stop & io.jump){
       programCounterReg := io.programCounterJump
   }
+  io.programCounter := programCounterReg
 }

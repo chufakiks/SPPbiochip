@@ -22,6 +22,11 @@ class CPUTop extends Module {
 
   })
 
+  //initializing output
+  io.done := false.B
+
+
+
   //Creating components
   val programCounter = Module(new ProgramCounter())
   val dataMemory = Module(new DataMemory())
@@ -29,67 +34,61 @@ class CPUTop extends Module {
   val registerFile = Module(new RegisterFile())
   val controlUnit = Module(new ControlUnit())
   val alu = Module(new ALU())
-  /*
-  val muxImmediate = Mux(controlUnit.io.memRead, registerFile.io.output2, registerFile.io.output1)
-  val muxWriteReg = Mux(controlUnit.io.regWrite, alu.io.resultint,dataMemory.io.dataRead)
-  val muxJumpSelector = Mux(controlUnit.io.jump, alu.io.resultbool, controlUnit.io.memRead)
-  val muxJump = Mux(muxJumpSelector, programMemory.io.address, programCounter.io.programCounter)
-  */
 
 
   // spliting up the instruction
   val instruction = programMemory.io.instructionRead
 
+  programCounter.io.stop := false.B // Default assignment for stop
+
   //muxes
-  val immediate = instruction(17, 8)
 
-  val muxregalu = Mux(controlUnit.io.aluSrc, immediate, registerFile.io.readAdress2)
-  alu.io.B := muxregalu
-
-  //mux inbetween datamemory and register file
-  val muxdatareg = Mux(controlUnit.io.memRead, dataMemory.io.dataRead, alu.io.resultint)
-  registerFile.io.writeData := muxregalu
   //mux inbetween registerfile and alu
-  //val muxregalu = Mux(sel er ikke implerenteret, instruction(17,8),registerFile.io.readAdress2)
+  val immediate = instruction(17, 8)
+  val muxregalu = Mux(controlUnit.io.aluSrc, immediate, registerFile.io.readAdress2)
 
-  //mux for jump
-  //val muxcontrolunit = Mux(alu.io.resultbool,controlUnit.io.jump,what to put here)
 
-  //mux inbetween pc and adder
-  //val muxpcadd = Mux(muxcontrolunit, programCounter.io.programCounter + 1, instruction(17,11))
 
   //Connecting the modules
   // Program counter update logic with conditional jump
+  /*
   val jumpCondition = (controlUnit.io.jeq && alu.io.resultbool) || (controlUnit.io.jlt && alu.io.resultbool)
   val finalJump = controlUnit.io.jump && jumpCondition
   val nextPC = Mux(finalJump, alu.io.resultint, programCounter.io.programCounter + 1.U)
   programCounter.io.programCounterJump := nextPC
 
+   */
+
   //programcounter
   programCounter.io.run := io.run
+  programCounter.io.stop := controlUnit.io.stop
+  programCounter.io.jump := alu.io.resultbool
+  programCounter.io.programCounterJump := instruction(17-11)
 
   //programmemory
   programMemory.io.address := programCounter.io.programCounter
 
   //registerfile
-  registerFile.io.writeData := muxdatareg
+  registerFile.io.writeData := Mux(controlUnit.io.memRead, dataMemory.io.dataRead, alu.io.resultint)
   registerFile.io.readAdress1 := instruction(22,18)
-  registerFile.io.readAdress2 := instruction(17,12)
+  registerFile.io.readAdress2 := Mux(controlUnit.io.regWrite, instruction(17,12), instruction(27,23))
   registerFile.io.writeSel := instruction(27,23)
   registerFile.io.writeEnable := controlUnit.io.regWrite
 
   //alu
-  alu.io.A := registerFile.io.readAdress1
-  //alu.io.B := muxregalu
+  alu.io.input1 := registerFile.io.readAdress1
+  alu.io.input2 := muxregalu
   alu.io.aluOp := controlUnit.io.aluOp
 
   //control unit
   controlUnit.io.opcode := instruction(31,28)
 
+
   //data memory
-  dataMemory.io.address := controlUnit.io.aluOp
-  dataMemory.io.dataWrite := registerFile.io.writeData
+  dataMemory.io.address := alu.io.resultint
+  dataMemory.io.dataWrite := registerFile.io.readAdress2
   dataMemory.io.writeEnable := controlUnit.io.memWrite
+
 
 //////////////////////////////////////////////////////////////////
 
