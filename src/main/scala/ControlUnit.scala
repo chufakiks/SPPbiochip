@@ -56,18 +56,18 @@ class ControlUnit extends Module {
       io.aluOp := 4.U //no ALU?
     }
     is(6.U) { //SD
-      io.aluOp := 5.U
+      io.aluOp := 4.U
       io.memWrite := true.B
     }
     is(7.U) { //JR
-      io.aluOp  := 6.U
+      io.aluOp  := 5.U
     }
     is(8.U) { // JEQ
-      io.aluOp := 7.U //SUB
+      io.aluOp := 6.U //SUB
 
     }
     is(9.U) { // JLT
-      io.aluOp := 8.U //sub
+      io.aluOp := 7.U //sub
 
     }
     is(10.U) {

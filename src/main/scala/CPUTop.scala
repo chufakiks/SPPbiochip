@@ -44,7 +44,7 @@ class CPUTop extends Module {
   //muxes
 
   //mux inbetween registerfile and alu
-  val immediate = instruction(17, 8)
+  val immediate = instruction(19, 8)
   val muxregalu = Mux(controlUnit.io.aluSrc, immediate, registerFile.io.readAdress2)
 
 
@@ -63,16 +63,17 @@ class CPUTop extends Module {
   programCounter.io.run := io.run
   programCounter.io.stop := controlUnit.io.stop
   programCounter.io.jump := alu.io.resultbool
-  programCounter.io.programCounterJump := instruction(17-11)
+  val target = instruction(19-13)
+  programCounter.io.programCounterJump := target
 
   //programmemory
   programMemory.io.address := programCounter.io.programCounter
 
   //registerfile
   registerFile.io.writeData := Mux(controlUnit.io.memRead, dataMemory.io.dataRead, alu.io.resultint)
-  registerFile.io.readAdress1 := instruction(22,18)
-  registerFile.io.readAdress2 := Mux(controlUnit.io.regWrite, instruction(17,12), instruction(27,23))
-  registerFile.io.writeSel := instruction(27,23)
+  registerFile.io.readAdress1 := instruction(23,20)
+  registerFile.io.readAdress2 := Mux(controlUnit.io.regWrite, instruction(19,13), instruction(27,24))
+  registerFile.io.writeSel := instruction(27,24)
   registerFile.io.writeEnable := controlUnit.io.regWrite
 
   //alu
