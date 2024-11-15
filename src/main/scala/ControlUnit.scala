@@ -52,7 +52,7 @@ class ControlUnit extends Module {
       io.memRead := true.B
     }
     is(6.U) { //SD
-      io.aluOp := 5.U
+      io.aluOp := 4.U
       io.memWrite := true.B
     }
     is(7.U) { //JR
