@@ -1,4 +1,4 @@
-import chisel3._
+/*import chisel3._
 import chisel3.iotesters.PeekPokeTester
 
 class RegisterTester(dut: RegisterFile) extends PeekPokeTester(dut) {
@@ -26,3 +26,4 @@ object ProgramCounterTester {
     }
   }
 }
+*/

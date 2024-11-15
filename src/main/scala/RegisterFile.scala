@@ -18,13 +18,11 @@ class RegisterFile extends Module {
   })
   val registers = Reg(Vec(10, UInt(32.W))) //ny array av registers
 
-  io.output1 := registers(io.readAdress1)
-  io.output2 := registers(io.readAdress2)
-
   when(io.writeEnable) { //skriv om register är aktiv
     registers(io.writeSel) := io.writeData
   }
-
+  io.output1 := registers(io.readAdress1)
+  io.output2 := registers(io.readAdress2)
   //Implement this module here
 
 }

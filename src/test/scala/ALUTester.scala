@@ -8,7 +8,7 @@ class ALUTester(dut: ALU) extends PeekPokeTester(dut) {
   // ALU Tester passthrough 5 clock cycles
 
   // 1+1
-  poke(dut.io., 1)
+  poke(dut.io.input1, 1)
   poke(dut.io.input2, 1)
   poke(dut.io.aluOp, 0)
   System.out.print(peek(dut.io.resultint))

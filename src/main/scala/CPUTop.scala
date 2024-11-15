@@ -5,7 +5,6 @@ class CPUTop extends Module {
   val io = IO(new Bundle {
     val done = Output(Bool ())
     val run = Input(Bool ())
-    val jump = Input(Bool())
 
     //This signals are used by the tester for loading and dumping the memory content, do not touch
     val testerDataMemEnable = Input(Bool ())
@@ -37,39 +36,25 @@ class CPUTop extends Module {
   val controlUnit = Module(new ControlUnit())
   val alu = Module(new ALU())
 
+  var instruction = RegInit(0.U(32.W))
 
   // spliting up the instruction
-  val instruction = programMemory.io.instructionRead
+  instruction := programMemory.io.instructionRead
+
+  //control unit
+  controlUnit.io.opcode := instruction(31,28)
+  io.done := controlUnit.io.stop
 
   // test
-  io.instruction := instruction
+  //io.instruction := instruction
   io.counter := programCounter.io.programCounter
-
-  //muxes
-
-  //mux inbetween registerfile and alu
-  val immediate = instruction(19, 8)
-  val muxregalu = Mux(controlUnit.io.aluSrc, immediate, registerFile.io.readAdress2)
-
-  /*when(programCounter.io.jump){
-    programMemory.io.address := programCounter.io.programCounterJump
-  }.otherwise {
-    programMemory.io.address := programCounter.io.programCounter
-  }*/
-
-  //Connecting the modules
-  // Program counter update logic with conditional jump
-
-  /*val jumpCondition = (controlUnit.io.JEQ && alu.io.resultbool) || (controlUnit.io.JLT && alu.io.resultbool)
-  val finalJump = controlUnit.io.jump && jumpCondition
-  val nextPC = Mux(finalJump, alu.io.resultint, programCounter.io.programCounter + 1.U)*/
-  programCounter.io.jump := alu.io.resultbool
 
 
   //programcounter
   programCounter.io.run := io.run
   programCounter.io.stop := controlUnit.io.stop
-  programCounter.io.programCounterJump := instruction(17,11)
+  programCounter.io.programCounterJump := instruction(19,13)
+  programCounter.io.jump := alu.io.resultbool
 
   //programmemory
   programMemory.io.address := programCounter.io.programCounter
@@ -83,12 +68,8 @@ class CPUTop extends Module {
 
   //alu
   alu.io.input1 := registerFile.io.output1
-  alu.io.input2 := muxregalu
+  alu.io.input2 := Mux(controlUnit.io.aluSrc, instruction(19, 8), registerFile.io.readAdress2)
   alu.io.aluOp := controlUnit.io.aluOp
-
-  //control unit
-  controlUnit.io.opcode := instruction(31,28)
-
 
   //data memory
   dataMemory.io.address := alu.io.resultint
