@@ -30,7 +30,7 @@ class ALU extends Module {
       }
     }
     is(7.U) { // jump if less than
-      when (io.input1 < io.input2) {
+      when (io.input1 > io.input2) {
         io.resultint := io.input1
         io.resultbool := true.B
       }

@@ -67,7 +67,7 @@ class CPUTop extends Module {
 
   //alu
   alu.io.input1 := registerFile.io.output1
-  alu.io.input2 := Mux(controlUnit.io.aluSrc, instruction(19, 8), registerFile.io.readAdress2)
+  alu.io.input2 := Mux(controlUnit.io.aluSrc, instruction(19, 8), registerFile.io.output2)
   alu.io.aluOp := controlUnit.io.aluOp
 
   //data memory
