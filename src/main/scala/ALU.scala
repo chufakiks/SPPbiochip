@@ -18,7 +18,7 @@ class ALU extends Module {
     is(1.U) { io.resultint := io.input1 - io.input2 } // sub
     is(2.U) { io.resultint := io.input1 * io.input2 } // mul
     is(3.U) { io.resultint := io.input2 } // Li
-    is(4.U) { io.resultint := io.input2  } // LD & SD
+    is(4.U) { io.resultint := io.input1 } // LD & SD
     is(5.U) { // Jump
       io.resultint := io.input1
       io.resultbool := true.B

@@ -20,6 +20,8 @@ class CPUTop extends Module {
     val testerProgMemWriteEnable = Input(Bool ())
     val testerProgMemDataWrite = Input(UInt (32.W))
 
+    val instruction = Output(UInt (32.W))
+    val counter = Output(UInt (16.W))
   })
 
   //initializing output
@@ -39,7 +41,9 @@ class CPUTop extends Module {
   // spliting up the instruction
   val instruction = programMemory.io.instructionRead
 
-  programCounter.io.stop := false.B // Default assignment for stop
+  // test
+  io.instruction := instruction
+  io.counter := programCounter.io.programCounter
 
   //muxes
 
@@ -47,23 +51,25 @@ class CPUTop extends Module {
   val immediate = instruction(17, 8)
   val muxregalu = Mux(controlUnit.io.aluSrc, immediate, registerFile.io.readAdress2)
 
-
+  /*when(programCounter.io.jump){
+    programMemory.io.address := programCounter.io.programCounterJump
+  }.otherwise {
+    programMemory.io.address := programCounter.io.programCounter
+  }*/
 
   //Connecting the modules
   // Program counter update logic with conditional jump
-  /*
-  val jumpCondition = (controlUnit.io.jeq && alu.io.resultbool) || (controlUnit.io.jlt && alu.io.resultbool)
-  val finalJump = controlUnit.io.jump && jumpCondition
-  val nextPC = Mux(finalJump, alu.io.resultint, programCounter.io.programCounter + 1.U)
-  programCounter.io.programCounterJump := nextPC
 
-   */
+  /*val jumpCondition = (controlUnit.io.JEQ && alu.io.resultbool) || (controlUnit.io.JLT && alu.io.resultbool)
+  val finalJump = controlUnit.io.jump && jumpCondition
+  val nextPC = Mux(finalJump, alu.io.resultint, programCounter.io.programCounter + 1.U)*/
+  programCounter.io.jump := alu.io.resultbool
+
 
   //programcounter
   programCounter.io.run := io.run
   programCounter.io.stop := controlUnit.io.stop
-  programCounter.io.jump := alu.io.resultbool
-  programCounter.io.programCounterJump := instruction(17-11)
+  programCounter.io.programCounterJump := instruction(17,11)
 
   //programmemory
   programMemory.io.address := programCounter.io.programCounter
@@ -76,7 +82,7 @@ class CPUTop extends Module {
   registerFile.io.writeEnable := controlUnit.io.regWrite
 
   //alu
-  alu.io.input1 := registerFile.io.readAdress1
+  alu.io.input1 := registerFile.io.output1
   alu.io.input2 := muxregalu
   alu.io.aluOp := controlUnit.io.aluOp
 
@@ -86,7 +92,7 @@ class CPUTop extends Module {
 
   //data memory
   dataMemory.io.address := alu.io.resultint
-  dataMemory.io.dataWrite := registerFile.io.readAdress2
+  dataMemory.io.dataWrite := registerFile.io.output2
   dataMemory.io.writeEnable := controlUnit.io.memWrite
 
 

@@ -48,7 +48,10 @@ class CPUTopTester(dut: CPUTop) extends PeekPokeTester(dut) {
   var maxInstructions = 20000
   var instructionsCounter = maxInstructions
   while(running) {
-    System.out.print("\rRunning cycle: " + (maxInstructions - instructionsCounter))
+    //System.out.print("\rRunning cycle: " + (maxInstructions - instructionsCounter))
+    val hi = peek(dut.io.instruction)
+    if (hi == 167772160)
+    System.out.println(hi)
     step(1)
     instructionsCounter = instructionsCounter - 1
     running = peek(dut.io.done) == 0 && instructionsCounter > 0

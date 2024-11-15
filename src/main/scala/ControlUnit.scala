@@ -11,8 +11,7 @@ class ControlUnit extends Module {
     val stop = Output(Bool())
     //Define the module interface here (inputs/outputs)
     val aluSrc = Output(Bool())        // if ALU uses or immediate
-    val writeBackSel = Output(Bool())  // chooses datasource for Writeback
-    val counterEnable = Output(Bool()) // controls Counter, if needed
+
   })
   io.aluOp := 0.U
   io.regWrite := false.B
@@ -20,59 +19,58 @@ class ControlUnit extends Module {
   io.memRead := false.B
   io.stop := false.B
   io.aluSrc := false.B
-  io.writeBackSel := false.B
-  io.counterEnable := false.B
 
   switch(io.opcode) {
     is(0.U) { //add
       io.regWrite := true.B // write result to reg
       io.aluOp := 0.U //add op
-      io.writeBackSel := true.B // writes back from ALU
+      io.memRead := false.B
     }
     is(1.U) { // SUB
       io.regWrite := true.B
       io.aluOp := 1.U // SUB operation
-      io.writeBackSel := true.B
+      io.memRead := false.B
     }
     is(2.U) { // MULT
       io.regWrite := true.B
       io.aluOp := 2.U // MULT operation
-      io.writeBackSel := true.B
+      io.memRead := false.B
     }
     is(3.U) { // ADDI
       io.regWrite := true.B
       io.aluOp := 0.U // ADD operation
       io.aluSrc := true.B  // ALU uses immediate value as operator
-      io.writeBackSel := true.B
+      io.memRead := false.B
     }
     is(4.U) { // LI (Load Immediate)
       io.regWrite := true.B
       io.aluOp := 3.U // LI operation
-      io.writeBackSel := true.B
+      io.memRead := false.B
     }
     is(5.U) { //LD (Load from Data Memory)
       io.regWrite := true.B
       io.memRead := true.B
-      io.aluOp := 4.U //no ALU?
     }
     is(6.U) { //SD
       io.aluOp := 5.U
       io.memWrite := true.B
     }
     is(7.U) { //JR
-      io.aluOp  := 6.U
+      io.aluOp  := 5.U
+
     }
     is(8.U) { // JEQ
-      io.aluOp := 7.U //SUB
+      io.aluOp := 6.U //SUB
+
 
     }
     is(9.U) { // JLT
-      io.aluOp := 8.U //sub
+      io.aluOp := 7.U //sub
+
 
     }
-    is(10.U) {
+    is(10.U) { // END
       io.stop := true.B
-      io.counterEnable := false.B
     }
   }
   //Implement this module here
