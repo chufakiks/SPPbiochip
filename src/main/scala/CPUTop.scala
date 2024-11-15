@@ -61,7 +61,7 @@ class CPUTop extends Module {
   //registerfile
   registerFile.io.writeData := Mux(controlUnit.io.memRead, dataMemory.io.dataRead, alu.io.resultint)
   registerFile.io.readAdress1 := instruction(23,20)
-  registerFile.io.readAdress2 := Mux(controlUnit.io.regWrite, instruction(19,13), instruction(27,24))
+  registerFile.io.readAdress2 := Mux(controlUnit.io.regWrite, instruction(19,16), instruction(27,24))
   registerFile.io.writeSel := instruction(27,24)
   registerFile.io.writeEnable := controlUnit.io.regWrite
 
