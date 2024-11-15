@@ -24,34 +24,29 @@ class ControlUnit extends Module {
     is(0.U) { //add
       io.regWrite := true.B // write result to reg
       io.aluOp := 0.U //add op
-      io.memRead := false.B
     }
     is(1.U) { // SUB
       io.regWrite := true.B
       io.aluOp := 1.U // SUB operation
-      io.memRead := false.B
+
     }
     is(2.U) { // MULT
       io.regWrite := true.B
       io.aluOp := 2.U // MULT operation
-      io.memRead := false.B
+
     }
-    is(3.U) { // ADDI
+    is(3.U) { // LI (Load Immediate)// LI
       io.regWrite := true.B
-      io.aluOp := 0.U // ADD operation
+      io.aluOp := 3.U // ADD operation
       io.aluSrc := true.B  // ALU uses immediate value as operator
-      io.memRead := false.B
+
     }
-    is(4.U) { // LI (Load Immediate)
+    is(4.U) { //LD (Load from Data Memory)
       io.regWrite := true.B
-      io.aluOp := 3.U // LI operation
-      io.memRead := false.B
-    }
-    is(5.U) { //LD (Load from Data Memory)
-      io.regWrite := true.B
+      io.aluOp := 4.U
       io.memRead := true.B
     }
-    is(6.U) { //SD
+    is(5.U) { // SD
       io.aluOp := 4.U
       io.memWrite := true.B
     }
@@ -62,15 +57,14 @@ class ControlUnit extends Module {
     is(8.U) { // JEQ
       io.aluOp := 6.U //SUB
 
-
     }
     is(9.U) { // JLT
       io.aluOp := 7.U //sub
 
-
     }
     is(10.U) { // END
       io.stop := true.B
+
     }
   }
   //Implement this module here

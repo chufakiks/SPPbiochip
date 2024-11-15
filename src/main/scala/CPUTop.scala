@@ -36,11 +36,10 @@ class CPUTop extends Module {
   val controlUnit = Module(new ControlUnit())
   val alu = Module(new ALU())
 
-  var instruction = RegInit(0.U(32.W))
+  var instruction =  programMemory.io.instructionRead
 
   // spliting up the instruction
-  instruction := programMemory.io.instructionRead
-
+  io.instruction := programMemory.io.instructionRead
   //control unit
   controlUnit.io.opcode := instruction(31,28)
   io.done := controlUnit.io.stop
