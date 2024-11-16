@@ -16,7 +16,7 @@ class RegisterFile extends Module {
 
     //Define the module interface here (inputs/outputs)
   })
-  val registers = Reg(Vec(11, UInt(32.W))) //ny array av registers
+  val registers = Reg(Vec(11, UInt(16.W))) //ny array av registers
 
   when(io.writeEnable) { //skriv om register är aktiv
     registers(io.writeSel) := io.writeData
