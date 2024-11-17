@@ -7,6 +7,7 @@ class ControlTester(dut: ControlUnit) extends PeekPokeTester(dut) {
   System.out.print(peek(dut.io.regWrite))
   System.out.print("\n")
   System.out.print(peek(dut.io.aluOp))
+  System.out.print("\n")
   step(1)
 
   // 0001
@@ -14,6 +15,7 @@ class ControlTester(dut: ControlUnit) extends PeekPokeTester(dut) {
   System.out.print(peek(dut.io.regWrite))
   System.out.print("\n")
   System.out.print(peek(dut.io.aluOp))
+  System.out.print("\n")
   step(1)
 
   // 0010
@@ -21,6 +23,7 @@ class ControlTester(dut: ControlUnit) extends PeekPokeTester(dut) {
   System.out.print(peek(dut.io.regWrite))
   System.out.print("\n")
   System.out.print(peek(dut.io.aluOp))
+  System.out.print("\n")
   step(1)
 
   // 0011
@@ -30,6 +33,7 @@ class ControlTester(dut: ControlUnit) extends PeekPokeTester(dut) {
   System.out.print(peek(dut.io.aluOp))
   System.out.print("\n")
   System.out.print(peek(dut.io.aluSrc))
+  System.out.print("\n")
   step(1)
 
   // 0100
@@ -39,6 +43,7 @@ class ControlTester(dut: ControlUnit) extends PeekPokeTester(dut) {
   System.out.print(peek(dut.io.aluOp))
   System.out.print("\n")
   System.out.print(peek(dut.io.memRead))
+  System.out.print("\n")
   step(1)
 
   // 0101
@@ -46,40 +51,43 @@ class ControlTester(dut: ControlUnit) extends PeekPokeTester(dut) {
   System.out.print(peek(dut.io.aluOp))
   System.out.print("\n")
   System.out.print(peek(dut.io.memWrite))
+  System.out.print("\n")
   step(1)
 
   // 0111
   poke(dut.io.opcode, 7)
   System.out.print(peek(dut.io.aluOp))
+  System.out.print("\n")
   step(1)
 
   // 1000
   poke(dut.io.opcode, 8)
   System.out.print(peek(dut.io.aluOp))
+  System.out.print("\n")
   step(1)
 
   // 1001
   poke(dut.io.opcode, 9)
   System.out.print(peek(dut.io.aluOp))
+  System.out.print("\n")
   step(1)
 
   // 1010
   poke(dut.io.opcode, 10)
-  System.out.print(peek(dut.io.aluOp))
-  System.out.print("\n")
   System.out.print(peek(dut.io.stop))
   step(1)
 
+}
   object ControlTester {
     def main(args: Array[String]): Unit = {
       println("Testing ControlUnit")
       iotesters.Driver.execute(
         Array("--generate-vcd-output", "on",
           "--target-dir", "generated",
-          "--top-name", "CPUTop"),
+          "--top-name", "ControlUnit"),
         () => new ControlUnit()) {
         c => new ControlTester(c)
       }
     }
   }
-}
+
