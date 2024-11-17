@@ -107,7 +107,7 @@ object ALUTester {
     iotesters.Driver.execute(
       Array("--generate-vcd-output", "on",
         "--target-dir", "generated",
-        "--top-name", "CPUTop"),
+        "--top-name", "ALU"),
       () => new ALU()) {
       c => new ALUTester(c)
     }
